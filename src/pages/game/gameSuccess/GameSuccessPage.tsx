@@ -1,10 +1,10 @@
 import { HomeButton } from 'components/button/HomeButton';
 import { HomeTemplate } from 'components/templates/HomeTemplate';
 
-export function HomePage() {
+export function GameSuccessPage() {
   return (
-    <HomeTemplate title="Hang Man">
-      <HomeButton title="Start" />
+    <HomeTemplate title="Hang Man rescue">
+      <HomeButton title="ReStart" />
     </HomeTemplate>
   );
 }
