@@ -11,6 +11,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'react/require-default-props': 'off',
     'react/function-component-definition': [
       2,
       { namedcomponents: 'arrow-function' },
