@@ -1,3 +1,7 @@
-export function Hangman() {
+interface Props {
+  count: number;
+}
+
+export function Hangman({ count }: Props) {
   return <div />;
 }
