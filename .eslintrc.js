@@ -11,6 +11,8 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'import/no-dynamic-require': 0,
+    'global-require': 0,
     'react/require-default-props': 'off',
     'react/function-component-definition': [
       2,

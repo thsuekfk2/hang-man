@@ -5,7 +5,7 @@ interface Props {
 
 export function HomeTemplate({ title, children }: Props) {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-full">
       {title !== '' && <div className="h-1/5 font-bold text-xl">{title}</div>}
       <div className="flex items-center">{children}</div>
     </div>

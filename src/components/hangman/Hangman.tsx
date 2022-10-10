@@ -3,5 +3,11 @@ interface Props {
 }
 
 export function Hangman({ count }: Props) {
-  return <div />;
+  return (
+    <img
+      className="h-full"
+      src={require(`../../assets/hangman/${count}.png`)}
+      alt="React"
+    />
+  );
 }
