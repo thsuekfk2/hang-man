@@ -18,18 +18,18 @@ export function AnswerInput({ answer, input, countHandler }: Props) {
     setCharacterList(showList);
   }, []);
 
-  // 답이 맞으면 맞는 답을 화면에 보여주고 아닐 경우 _ 빈 값
   useEffect(() => {
     const tmp = [...characterList];
     for (let i = 0; i < answer.length; i += 1) {
       if (answerArray[i] === input) {
         tmp[i] = input;
         setCharacterList(tmp);
-        return;
       }
     }
-    setDisCorrect(disCorrect + 1);
-    countHandler?.(disCorrect);
+    if (!answerArray.includes(input)) {
+      setDisCorrect(disCorrect + 1);
+      countHandler?.(disCorrect);
+    }
   }, [input]);
 
   return <div className="">{characterList}</div>;
