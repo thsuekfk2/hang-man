@@ -1,12 +1,16 @@
 import useInterval from 'hooks/useInterval';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Props {
-  start?: boolean;
+  reStart?: string | boolean;
 }
 
-export function Timer({ start }: Props) {
+export function Timer({ reStart }: Props) {
   const [second, setSecond] = useState(10);
+
+  useEffect(() => {
+    setSecond(10);
+  }, [reStart]);
 
   useInterval(() => {
     if (second > 0) {
@@ -17,5 +21,7 @@ export function Timer({ start }: Props) {
     }
   }, 1000);
 
-  return <div>{start && (second < 10 ? `0${second}` : second)}</div>;
+  return (
+    <div>{(reStart || true) && (second < 10 ? `0${second}` : second)}</div>
+  );
 }

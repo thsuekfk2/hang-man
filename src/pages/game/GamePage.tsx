@@ -9,38 +9,50 @@ export function GamePage() {
   const navigator = useNavigate();
   const [answer, setAnswer] = useState('apple');
   const [input, setInput] = useState('');
-  const [count, setCount] = useState(1);
+  const [disCorrectcount, setDisCorrectcountCount] = useState(0);
+  const [correctcount, setCorrectcount] = useState(0);
+
   const alphabetArray = Array.from({ length: 26 }, (v, i) =>
     String.fromCharCode(i + 65),
   );
 
-  const countDisCorrectHandler = (count: number) => {
-    setCount(count);
+  const countDisCorrectHandler = (disCorrect: number) => {
+    setDisCorrectcountCount(disCorrect);
+  };
+  const countCorrectHandler = (correct: number) => {
+    setCorrectcount(correct);
   };
 
   useEffect(() => {
-    if (count === 10) {
+    if (disCorrectcount === 9) {
       navigator(`/gameover`);
     }
-  }, [count]);
+  }, [disCorrectcount]);
+
+  useEffect(() => {
+    if (correctcount === new Set(answer).size) {
+      navigator(`/gamesuccess`);
+    }
+  }, [correctcount]);
 
   return (
     <div className="flex flex-col h-full">
       <div className="header">
         <div className="flex justify-center align-middle">
-          <Timer start />
+          <Timer reStart={input} />
         </div>
       </div>
       <div className="flex flex-row w-full h-3/4">
         <div className="w-1/2 h-full ">
-          <Hangman count={count} />
+          <Hangman count={disCorrectcount} />
         </div>
 
         <div className="flex justify-center w-1/2 items-center">
           <AnswerInput
             answer={answer}
             input={input}
-            countHandler={countDisCorrectHandler}
+            countDisCorrectHandler={countDisCorrectHandler}
+            countCorrectHandler={countCorrectHandler}
           />
         </div>
       </div>
